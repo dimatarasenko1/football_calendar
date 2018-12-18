@@ -1,6 +1,6 @@
 import requests
 import datetime
-
+#This class sole purpose is to return the elo ratings lists of all teams for today
 class ClubElos:
   def __init__(self):
     self.today = datetime.datetime.today().strftime('%Y-%m-%d')
