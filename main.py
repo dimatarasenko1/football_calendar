@@ -5,6 +5,7 @@ import string
 
 # This function will get elo rating of each club and plus them
 def calculate_elo(club1, club2):
+  fixture_rating = 0
   for club in club_elo_ratings_for_today:
     if club1 in club:
       club1_elo = club[1]
@@ -17,8 +18,11 @@ def calculate_elo(club1, club2):
       break
     else:
       club2_elo = 0
-
-  return club1_elo + club2_elo      
+  combined_elo = club1_elo + club2_elo   
+  if club1_elo - club2_elo >= 200 or club2_elo - club1_elo >= 200:
+    fixture_rating =  combined_elo * 0.95
+  else: fixture_rating = combined_elo
+  return fixture_rating   
 
 # this will return the top 5 games in terms of total elos as a list of indices in the original list in receives.
 def top_five(list_of_elos):
